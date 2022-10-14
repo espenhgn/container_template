@@ -1,0 +1,8 @@
+name: container_template
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - sphinx_rtd_theme
+  - m2r2
