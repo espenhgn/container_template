@@ -47,7 +47,6 @@ if __name__ == '__main__':
                         print(f'skipping {os.path.join(root, filename)}')
                         continue
                 
-                
                 # modify file contents:
                 with open(os.path.join(root, filename), 'r', encoding="utf8") as f :
                     filedata = f.read()
@@ -59,7 +58,7 @@ if __name__ == '__main__':
                 if newfiledata != filedata:
                     print(f'rewriting {os.path.join(root, filename)}')
                     with open(os.path.join(root, filename), 'w', encoding="utf8") as f:
-                        f.write(filedata)
+                        f.write(newfiledata)
 
                 # modify file names:
                 if filename.rfind(oldproject) > 0:
@@ -68,15 +67,16 @@ if __name__ == '__main__':
                     os.rename(filename, newfilename)
                             
             # iterate over directories
-            for directory in dirs:
-                if root.split(os.path.sep)[1] in forbiddendirs:
-                    print(f'skipping {directory}')
-                    continue
-                
-                if directory.rfind(oldproject) > 0:
-                    newdir = directory.replace(oldproject, project)
-                    print(f'renaming {directory} {newdir}')
-                    os.rename(directory, newdir)
+            if root != '.':
+                for directory in dirs:
+                    if root.split(os.path.sep)[1] in forbiddendirs:
+                        print(f'skipping {directory}')
+                        continue
+                    
+                    if directory.rfind(oldproject) > 0:
+                        newdir = directory.replace(oldproject, project)
+                        print(f'renaming {directory} {newdir}')
+                        os.rename(directory, newdir)
             
             
         # copy ./scripts/PROJECT_README.md over ./README.md
