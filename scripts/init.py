@@ -47,6 +47,7 @@ if __name__ == '__main__':
                         print(f'skipping {os.path.join(root, filename)}')
                         continue
                 
+                
                 # modify file contents:
                 with open(os.path.join(root, filename), 'r', encoding="utf8") as f :
                     filedata = f.read()
@@ -58,7 +59,7 @@ if __name__ == '__main__':
                 if newfiledata != filedata:
                     print(f'rewriting {os.path.join(root, filename)}')
                     with open(os.path.join(root, filename), 'w', encoding="utf8") as f:
-                        f.write(newfiledata)
+                        f.write(filedata)
 
                 # modify file names:
                 if filename.rfind(oldproject) > 0:
