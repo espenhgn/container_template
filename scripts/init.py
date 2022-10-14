@@ -35,16 +35,20 @@ if __name__ == '__main__':
         # walk files and replace occurrences of `oldproject` by `project`` ID,
         # and `oldname` by `name` (github org/user) as supplied by the user.
 
-        forbiddendirs = ['.git', ]
+        forbiddendirs = ['.git', '.pytest_cache']
+        exclude = set(['__pycache__'])
         forbiddenfiles = []
-        for root, dirs, files in os.walk('.', topdown=False):
+        for root, dirs, files in os.walk('.', topdown=True):
+            dirs[:] = [d for d in dirs if d not in exclude]
             # iterate over files
             for filename in files:
-                if root.split(os.path.sep)[0] in forbiddendirs:
-                    print(f'skipping {os.path.join(root, filename)}')
-                    continue
-
-                 # modify file contents:
+                if root != '.':
+                    if root.split(os.path.sep)[1] in forbiddendirs:
+                        print(f'skipping {os.path.join(root, filename)}')
+                        continue
+                
+                
+                # modify file contents:
                 with open(os.path.join(root, filename), 'r', encoding="utf8") as f :
                     filedata = f.read()
 
@@ -54,27 +58,31 @@ if __name__ == '__main__':
 
                 if newfiledata != filedata:
                     print(f'rewriting {os.path.join(root, filename)}')
-                # with open(os.path.join(root, filename), 'w', encoding="utf8") as f:
-                #     print(f'rewriting {filename}')
-                #     f.write(filedata)
+                    with open(os.path.join(root, filename), 'w', encoding="utf8") as f:
+                        f.write(filedata)
 
                 # modify file names:
                 if filename.rfind(oldproject) > 0:
                     newfilename = filename.replace(oldproject, project)
                     print(f'renaming {os.path.join(root, filename)} {os.path.join(root, newfilename)}')
-                    # os.rename(filename, newfilename)
-            
+                    os.rename(filename, newfilename)
+                            
             # iterate over directories
             for directory in dirs:
-                if root.split(os.path.sep)[0] in forbiddendirs:
+                if root.split(os.path.sep)[1] in forbiddendirs:
                     print(f'skipping {directory}')
                     continue
                 
                 if directory.rfind(oldproject) > 0:
                     newdir = directory.replace(oldproject, project)
                     print(f'renaming {directory} {newdir}')
-                    # os.rename(directory, newdir)
-                
+                    os.rename(directory, newdir)
+            
+            
+        # copy ./scripts/PROJECT_README.md over ./README.md
+        os.remove('README.md')
+        os.rename(os.path.join('scripts', 'PROJECT_README.md'), 'README.md')
 
-        print('The repository has been converted.\n',
-              'Commit and push all changes by issuing ``git commit -a -m "initial setup"; git push``')
+        print('The repository has been converted.\n', 
+        'Commit and push all changes to the remote by issuing \n', 
+        '``git commit -a -m "initial setup"; git push``')
