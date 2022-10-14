@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('.'))
 _d = {}
 exec(open(os.path.join('..', '..', 'version', 'version.py')
           ).read(), None, _d)
-_release = _d['version']
+_release = _d['VERSION']
 
 
 # -- Project information -----------------------------------------------------

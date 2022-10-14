@@ -11,3 +11,6 @@ __pycache__
 
 # R
 .rda
+
+# Sphinx
+_build
