@@ -36,7 +36,7 @@ if __name__ == '__main__':
         # walk files and replace occurrences of `OLDPROJECT` by `project`` ID,
         # and `OLDNAME` by `name` (github org/user) as supplied by the user.
         forbiddendirs = ['.git', '.pytest_cache']
-        exclude = set(['__pycache__'])
+        exclude = set(['__pycache__', '_build', '_static', '_template'])
         forbiddenfiles = []
         for root, dirs, files in os.walk('.', topdown=True):
             dirs[:] = [d for d in dirs if d not in exclude]
