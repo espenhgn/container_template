@@ -33,7 +33,6 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
     'sphinx.ext.mathjax',
-    'numpydoc',
     'm2r2'
 ]
 
