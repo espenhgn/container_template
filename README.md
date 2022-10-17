@@ -27,8 +27,8 @@ One convenient way to set up a Python environment is [Conda](https://docs.conda.
 Assuming one of these Python distributions is installed, issue the following to create a new Python environment using `conda`:
 
 ```
-conda create -n <project> python=3 pip  # create environment named <project>
-conda activate <project>  # activates enviromnent
+conda create -n <container_template> python=3 pip  # create environment named <container_template>
+conda activate <container_template>  # activates enviromnent <container_template>
 pip install -r setup-requirements.txt
 ```
 

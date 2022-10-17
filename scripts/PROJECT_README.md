@@ -2,11 +2,22 @@
 
 README info goes here. Modify for your own project's needs.
 
+# Important! - post initial setup steps
+
+After setting up project from the template, commit and push the changes after running the setup script (`scripts/init.py`):
+
+```
+git commit -a -m "initial setup"
+git push
+```
+
+The remaining codes may then be added to and be modified further to suit the requirements of the `<container_template>` project. 
+
 # Important! - Set up Git LFS
 
-Container files may get large and one should never add large binary files (.sif, .zip, .tar.gz, .mat, .dat, etc.) in [git](https://git-scm.com) repositories directly, mainly files that can be parsed as raw text files (code files, etc.)
-[**Git Large File Storage** (LFS)](https://git-lfs.github.com) should be used instead. 
-Before adding new files to this project, go through step 1-3 on the Git LFS [homepage](https://git-lfs.github.com). 
+Container files may get large and one should never add large binary files (.sif, .zip, .tar.gz, .mat, .dat, etc.) in [git](https://git-scm.com) repositories directly, mainly files that can be parsed as raw text files (code files, etc.).
+[**Git Large File Storage** (LFS)](https://git-lfs.github.com) should be used instead.
+Before adding new files to this project after initialization (running `python scripts/init.py`), go through step 1-3 on the Git LFS [homepage](https://git-lfs.github.com).
 Revise the `<container_template>/.gitattributes` file as necessary. Some common file formats has been added already.
 
 ## Description of available containers
@@ -26,6 +37,23 @@ Please keep up to date (and update the main `<container_template>/README.md` whe
 ## Building/rebuilding containers
 
 For instructions on how to build or rebuild containers using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/src/README.md`](https://github.com/espenhgn/container_template/blob/main/src/README.md).
+
+## Build the documentation
+
+Within this repository, the html-documentation can be built from source files put here using [Sphinx](https://www.sphinx-doc.org/en/master/index.html). 
+To do so, install Sphinx and some additional packages in python using [Conda](https://docs.conda.io/en/latest/) by issuing:
+
+```
+cd <container_template>/docs/source
+conda env create -f environment.yml  # creates environment "sphinx"
+conda activate sphinx  # activates environment "sphinx
+make html  # builds html documentation into _build/html/ subdirectory
+```
+
+The built documentation can be viewed locally in a web browser by opening the file 
+`<container_template>/docs/source/_build/html/index.html`
+
+The documentation may also be hosted online on [readthedocs.org](https://readthedocs.org).
 
 ## Feedback
 

@@ -13,6 +13,7 @@ Welcome to template's documentation!
 
 .. include:: _readme.md
 
+.. mdinclude:: ../container_template.md
 
 Indices and tables
 ==================

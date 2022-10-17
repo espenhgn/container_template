@@ -1,4 +1,4 @@
-name: container_template
+name: sphinx
 channels:
   - conda-forge
   - defaults
@@ -6,3 +6,5 @@ dependencies:
   - python=3.8
   - sphinx_rtd_theme
   - m2r2
+  - numpydoc
+  - make
