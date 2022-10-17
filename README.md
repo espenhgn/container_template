@@ -5,9 +5,9 @@ This is a template repository for singularity/dockerfile containers and build sc
 ## Build status
 
 [![License](http://img.shields.io/:license-GPLv3+-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Documentation Status](https://readthedocs.org/projects/espenhgn/badge/?version=latest)](https://container_template.readthedocs.io/en/latest/?badge=latest)
-[![Flake8 lint](https://github.com/espenhgn/container_template/actions/workflows/python.yml/badge.svg)]
-[![Dockerfile lint](https://github.com/espenhgn/container_template/actions/workflows/docker.yml/badge.svg)]
+[![Documentation Status](https://readthedocs.org/projects/espenhgn/badge/?version=latest)](https://container-template.readthedocs.io/en/latest/?badge=latest)
+[![Flake8 lint](https://github.com/espenhgn/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/python.yml)
+[![Dockerfile lint](https://github.com/espenhgn/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/docker.yml)
 
 ## Getting started
 
