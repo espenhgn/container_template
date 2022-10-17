@@ -2,7 +2,7 @@
 
 ## Singularity containers
 
-This repository is used to develop and document [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/index.html#) containers with various software and analytical tools.
+This repository is used to develop and document [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) containers with various software and analytical tools.
 
 ## Software versions
 
@@ -20,12 +20,60 @@ If you face any issues, or if you need additional software, please let us know b
 
 ## Build instructions
 
+### The easy(er) way
+
+For convenience, a `Makefile` is provided in this directory in order to build [Singularity](https://docs.sylabs.io) containers from Dockerfiles (as `<container_template/src/dockerfiles/container_template/Dockerfile>).
+Using this files assumes that a working [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) installation, as well as the [`GNU make`](https://www.gnu.org/software/make/) utility is available on the host computer/build system.
+On Debian-based Linux OS, this utility can usually be installed by issuing`apt-get install -y make`; on MacOS with [Homebrew](https://brew.sh) as`brew install make`. Prefix`sudo` if necessary.
+
+Then, the container can be built by issuing:
+
+```
+make container_template.sif
+```
+
+If all went well, the built file should be located as `<container_template/containers/container_template.sif>`.
+In case super-user (`sudo`) privileges are required, issue:
+
+```
+sudo make container_template.sif
+```
+
+### Manual builds
+
+In order to build the container manually, this is possible via the following steps
+
+```
+docker build -t container_template -f dockerfiles/container_template/Dockerfile .  # build docker container
+bash scripts/convert_docker_image_to_singularity.sh container_template  # produces container_template.sif
+bash scripts/scripts/move_singularity_file.sh.sh container_template  # put container_template.sif file to <container_template>/containers/ directory
+```
+
+Again, super-user (`sudo`) privileges may be required on the host computer. In that case, prefix `sudo` on the line(s) that fail.
+
+### Clean up
+
+The above steps may leave a collection of images in the Docker registry, wasting drive space.
+To list them, issue
+
+```
+docker images -a
+```
+
+Chosen images can be removed by issuing:
+
+```
+docker rmi <image-id-1> <image-id-2> ... 
+```
+
+For more info, see [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm/)
+
 ## Testing container builds
 
 Some basic checks for the functionality of the different container builds are provided in `<container_template>/tests/`, implemented in Python.
-The tests can be executed using the [Pytest](https://docs.pytest.org) testing framework. 
+The tests can be executed using the [Pytest](https://docs.pytest.org) testing framework.
 
-In case `singularity` is not found in `PATH`, tests will fall back to `docker`. 
+In case `singularity` is not found in `PATH`, tests will fall back to `docker`.
 In case `docker` is not found, no tests will run.
 
 To install Pytest in the current Python environment, issue:

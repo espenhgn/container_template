@@ -1,3 +1,3 @@
 # scripts directory
 
-Misc. scripts required by this project goes here.
+Misc. scripts and files required by this project goes here.
