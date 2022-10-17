@@ -40,10 +40,12 @@ python scripts/init.py
 ```
 
 The script is interactive, and will prompt the user for some info. 
-It will modify certain files in the `<project>` directory and also replace this `README` file.
+It will modify certain files in the `<project>` directory and also replace this `README` file. 
+Some files may also be renamed.
 Remember to commit and push the changes after running the setup script (`scripts/init.py`):
 ```
-git commit -a -m "initial setup"
+git add <file1> <file2> ...
+git commit -m "initial setup"
 git push
 ```
 

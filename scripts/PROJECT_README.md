@@ -4,9 +4,10 @@ README info goes here. Modify for your own project's needs.
 
 # Important! - post initial setup steps
 
-After setting up project from the template, commit and push the changes after running the setup script (`scripts/init.py`):
+After setting up project from the template, add files, commit and push the changes after running the setup script (`scripts/init.py`):
 
 ```
+git add <file1> <file2> ...
 git commit -a -m "initial setup"
 git push
 ```
