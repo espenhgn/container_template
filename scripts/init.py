@@ -62,7 +62,7 @@ if __name__ == '__main__':
                         f.write(newfiledata)
 
                 # modify file names:
-                if filename.rfind(OLDPROJECT) > 0:
+                if filename.rfind(OLDPROJECT) >= 0:
                     newfilename = filename.replace(OLDPROJECT, project)
                     newfilepath = os.path.join(root, newfilename)
                     oldfilepath = os.path.join(root, filename)
@@ -78,7 +78,7 @@ if __name__ == '__main__':
                         print(f'skipping {os.path.join(root, directory)}')
                         continue
 
-                    if directory.rfind(OLDPROJECT) > 0:
+                    if directory.rfind(OLDPROJECT) >= 0:
                         newdir = directory.replace(OLDPROJECT, project)
                         fullnewdir = os.path.join(root, newdir)
                         fullolddir = os.path.join(root, directory)
