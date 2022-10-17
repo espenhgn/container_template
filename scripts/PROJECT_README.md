@@ -21,6 +21,13 @@ Container files may get large and one should never add large binary files (.sif,
 Before adding new files to this project after initialization (running `python scripts/init.py`), go through step 1-3 on the Git LFS [homepage](https://git-lfs.github.com).
 Revise the `<container_template>/.gitattributes` file as necessary. Some common file formats has been added already.
 
+## Build status
+
+[![License](http://img.shields.io/:license-GPLv3+-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![Documentation Status](https://readthedocs.org/projects/espenhgn/badge/?version=latest)](https://container_template.readthedocs.io/en/latest/?badge=latest)
+[![Flake8 lint](https://github.com/espenhgn/container_template/actions/workflows/python.yml/badge.svg)]
+[![Dockerfile lint](https://github.com/espenhgn/container_template/actions/workflows/docker.yml/badge.svg)]
+
 ## Description of available containers
 
 * ``container_template`` - a hello-world introductory container setup
