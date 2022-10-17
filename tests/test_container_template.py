@@ -20,7 +20,7 @@ try:
     PREFIX = f'singularity run {pth}'
 except FileNotFoundError:    
     try:
-        out = subprocess.run('dockr')
+        out = subprocess.run('docker')
         PREFIX = 'docker run -p 5001:5001 container_template'
     except FileNotFoundError:
         raise FileNotFoundError('Neither `singularity` nor `docker` found in PATH. Can not run tests!')
