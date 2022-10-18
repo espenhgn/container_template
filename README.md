@@ -6,13 +6,13 @@ This is a template repository for singularity/dockerfile containers and build sc
 
 [![License](http://img.shields.io/:license-GPLv3+-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![Documentation Status](https://readthedocs.org/projects/container-template/badge/?version=latest)](https://container-template.readthedocs.io/en/latest/?badge=latest)
-[![Flake8 lint](https://github.com/espenhgn/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/python.yml)
-[![Dockerfile lint](https://github.com/espenhgn/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/docker.yml)
+[![Flake8 lint](https://github.com/precimed/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/python.yml)
+[![Dockerfile lint](https://github.com/precimed/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/docker.yml)
 
 ## Getting started
 
 To use these codes, **do not** clone or fork this repository, but click the green 
-[Use this template](https://github.com/espenhgn/container_template/generate)
+[Use this template](https://github.com/precimed/container_template/generate)
 button above.
 
 You may then create a new repository on a GitHub organization or user account (`<user>`) under a new project name (`<project>`), 

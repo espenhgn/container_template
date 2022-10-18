@@ -10,7 +10,7 @@ It only contains Python 3.10.
 
 ## Getting Started
 
-* Download ``container_template.sif`` from [here](https://github.com/espenhgn/container_template/tree/main/containers)
+* Download ``container_template.sif`` from [here](https://github.com/precimed/container_template/tree/main/containers)
 * Import these files to your secure HPC environment
 * Run ``singularity exec --no-home container_template.sif python3 --help``, to validate that you can run singularity. This command is expected to produce the standard python help message, starting like this:
 
@@ -53,7 +53,7 @@ There are several ways to give singularity container access to your data. Here a
    In this way in your python command you can refer to the files as if they are in your local folder without specifying the path.
 
 2. Now, let's assume that instead of downloading the ``container_template.sif`` container file you've cloned the entire github repo
-   (``git clone git@github.com:espenhgn/container_template.git``), have built and pushed the container, and have transfered it to your HPC environment.
+   (``git clone git@github.com:precimed/container_template.git``), have built and pushed the container, and have transfered it to your HPC environment.
    Then change your folder to the root of the ``container_template`` repository, and run these commands:
 
    ```
@@ -91,4 +91,4 @@ There are several ways to give singularity container access to your data. Here a
   singularity exec --home $PWD:/home container_template.sif python -c "print('Hello Moon')"
   ```
 
-Please [let us know](https://github.com/espenhgn/container_template/issues/new) if you face any problems.
+Please [let us know](https://github.com/precimed/container_template/issues/new) if you face any problems.
