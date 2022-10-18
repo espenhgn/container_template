@@ -24,6 +24,7 @@ try:
     pth = os.path.join('containers', 'container_template.sif')
     out = subprocess.run('singularity')
     PREFIX = f'singularity run {pth}'
+    PREFIX_MOUNT = PREFIX
 except FileNotFoundError:    
     try:
         out = subprocess.run('docker')
