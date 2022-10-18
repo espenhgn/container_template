@@ -25,8 +25,8 @@ Revise the `<container_template>/.gitattributes` file as necessary. Some common 
 
 [![License](http://img.shields.io/:license-GPLv3+-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![Documentation Status](https://readthedocs.org/projects/container-template/badge/?version=latest)](https://container-template.readthedocs.io/en/latest/?badge=latest)
-[![Flake8 lint](https://github.com/espenhgn/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/python.yml)
-[![Dockerfile lint](https://github.com/espenhgn/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/espenhgn/container_template/actions/workflows/docker.yml)
+[![Flake8 lint](https://github.com/precimed/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/python.yml)
+[![Dockerfile lint](https://github.com/precimed/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/docker.yml)
 
 ## Description of available containers
 
@@ -44,7 +44,7 @@ Please keep up to date (and update the main `<container_template>/README.md` whe
 
 ## Building/rebuilding containers
 
-For instructions on how to build or rebuild containers using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/src/README.md`](https://github.com/espenhgn/container_template/blob/main/src/README.md).
+For instructions on how to build or rebuild containers using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/src/README.md`](https://github.com/precimed/container_template/blob/main/src/README.md).
 
 ## Build the documentation
 
@@ -65,4 +65,4 @@ The documentation may also be hosted online on [readthedocs.org](https://readthe
 
 ## Feedback
 
-If you face any issues, or if you need additional software, please let us know by creating a new [issue](https://github.com/espenhgn/container_template/issues/new).
+If you face any issues, or if you need additional software, please let us know by creating a new [issue](https://github.com/precimed/container_template/issues/new).

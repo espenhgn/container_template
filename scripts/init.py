@@ -18,7 +18,7 @@ if __name__ == '__main__':
         f'The project should be hosted at https://github.com/{name}/{project}')
 
     # old variables which will be renamed
-    OLDNAME = 'espenhgn'
+    OLDNAME = 'precimed'
     OLDPROJECT = 'container_template'
 
     while True:
