@@ -8,11 +8,13 @@ This repository is used to develop and document [Docker](https://www.docker.com)
 
   Below is the list of tools included in the different Dockerfiles and installer bash scripts for each container.
   Please keep up to date (and update the main `<container_template>/README.md` when pushing new container builds):
+
+### container_template.sif
   
-  | container               | OS/tool             | version
-  | ------------------------| ------------------- | ----------------------------------------
-  | container_template.sif  | ubuntu              | 20.04
-  | container_template.sif  | python              | 3.8.10
+| OS/tool             | Version               | License           | Source
+| ------------------- | --------------------- | ----------------- | -------------
+| ubuntu              | 20.04                 | [Creative Commons CC-BY-SA version 3.0 UK licence](https://ubuntu.com/legal/intellectual-property-policy) | [Ubuntu.com](https://ubuntu.com)
+| python              | 3.8.10                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
 
 ## Feedback
 
@@ -53,16 +55,17 @@ In case you do not want to use Singularity (e.g., for testing locally), the buil
 docker run -it -p 5001:5001 container_template python --version
 ```
 
-which should return the currently installed Python version incorporated into the container. 
+which should return the currently installed Python version incorporated into the container.
 You may replace the port numbers (``5001``) by another (e.g., ``5000``).
 
 To convert, and relocate the Singularity container file generated from the Docker image, issue
+
 ```
 bash scripts/convert_docker_image_to_singularity.sh container_template  # produces container_template.sif
 bash scripts/scripts/move_singularity_file.sh.sh container_template  # put container_template.sif file to <container_template>/containers/ directory
 ```
 
-Again, super-user (`sudo`) privileges may be required on the host computer. In that case, prefix `sudo` on the line(s) that fail. 
+Again, super-user (`sudo`) privileges may be required on the host computer. In that case, prefix `sudo` on the line(s) that fail.
 For further details on the commands within each bash file, open the ``.sh`` files in a code editor.
 
 ### Clean up
