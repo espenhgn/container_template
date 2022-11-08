@@ -37,10 +37,12 @@ Revise the `<container_template>/.gitattributes` file as necessary. Some common 
 Below is the list of tools included in the different Dockerfile(s) and installer bash scripts for each container.
 Please keep up to date (and update the main `<container_template>/README.md` when pushing new container builds):
   
-  | container               | OS/tool             | version
-  | ----------------------- | ------------------- | ----------------------------------------
-  | container_template.sif  | ubuntu              | 20.04
-  | container_template.sif  | python3             | python 3.10.6
+### container_template.sif
+  
+| OS/tool             | Version               | License           | Source
+| ------------------- | --------------------- | ----------------- | -------------
+| ubuntu              | 20.04                 | [Creative Commons CC-BY-SA version 3.0 UK licence](https://ubuntu.com/legal/intellectual-property-policy) | [Ubuntu.com](https://ubuntu.com)
+| python              | 3.8.10                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
 
 ## Building/rebuilding containers
 

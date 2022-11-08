@@ -63,7 +63,7 @@ There are several ways to give singularity container access to your data. Here a
    Note that input paths are relative to the current folder. Also, we specified ``ro`` and ``rw`` access, to have reference data as read-only,
    but explicitly allow the container to write into ``/out`` folder (mapped to ``out_dir`` on the host).
 
-3. Run 
+3. Run
 
    ```
    singularity shell --home $PWD:/home -B $(pwd)/data:/data container_template.sif
