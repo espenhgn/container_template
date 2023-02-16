@@ -47,7 +47,23 @@ def test_container_template_python():
     assert out.returncode == 0
 
 def test_container_template_python_script():
+    '''test that Python can run a script'''
     pwd = os.getcwd() if PREFIX.rfind('docker') >= 0 else '.'
     call = f'''{PREFIX_MOUNT} python {pwd}/tests/extras/hello.py'''
     out = subprocess.run(call.split(' '), capture_output=True)
+    assert out.returncode == 0
+
+def test_container_template_python_packages():
+    '''test that the Python packages are installed'''
+    packages = [
+        'numpy',
+        'scipy',
+        'pandas',
+        'matplotlib',
+        'seaborn',
+        'sklearn'
+        ]
+    importstr = 'import ' + ', '.join(packages)
+    call = f"{PREFIX} python -c '{importstr}'"
+    out = subprocess.run(call, shell=True)
     assert out.returncode == 0

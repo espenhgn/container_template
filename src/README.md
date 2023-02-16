@@ -14,7 +14,8 @@ This repository is used to develop and document [Docker](https://www.docker.com)
 | OS/tool             | Version               | License           | Source
 | ------------------- | --------------------- | ----------------- | -------------
 | ubuntu              | 20.04                 | [Creative Commons CC-BY-SA version 3.0 UK licence](https://ubuntu.com/legal/intellectual-property-policy) | [Ubuntu.com](https://ubuntu.com)
-| python              | 3.8.10                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
+| Mambaforge          | Mambaforge-22.11.1-4  | [BSD-3-clause](https://github.com/conda-forge/miniforge/blob/main/LICENSE) | [github.com/conda-forge/miniforge](https://github.com/conda-forge/miniforge)
+| python              | 3.10.6                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
 
 ## Feedback
 
