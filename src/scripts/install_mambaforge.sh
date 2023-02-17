@@ -4,5 +4,3 @@ curl -sSL https://github.com/conda-forge/miniforge/releases/download/$version/Ma
   && mkdir /root/.conda \
   && bash /tmp/mambaforge.sh -bfp /usr/local \
   && rm -rf /tmp/mambaforge.sh
-
-export PATH=$PATH:/opt/conda/bin
