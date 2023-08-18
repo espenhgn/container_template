@@ -3,7 +3,7 @@
 Specific information about the `container_template.sif` file goes here.
 Modify as needed.
 
-You may use the ``container_template.sif`` container file to familirize yourself with [Singularity](<https://sylabs.io/docs/>),
+You may use the ``container_template.sif`` container file to familiarize yourself with [Singularity](<https://sylabs.io/docs/>),
 and the way it works on your secure HPC environment (TSD, Bianca, Computerome, or similar).
 This singularity container is indented as a demo.
 It only contains Python 3.10.
@@ -82,7 +82,7 @@ There are several ways to give singularity container access to your data. Here a
   ```
   #!/bin/bash
   #SBATCH --job-name=container_template
-  #SBATCH --account=$PROEJCT
+  #SBATCH --account=$PROJECT
   #SBATCH --time=00:10:00
   #SBATCH --cpus-per-task=1
   #SBATCH --mem-per-cpu=8000M
