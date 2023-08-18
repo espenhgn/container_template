@@ -25,15 +25,14 @@ if __name__ == '__main__':
         response = input('Is this correct (yes/no)? ')
         if response in ['Y', 'y', 'yes', 'Yes', 'N', 'n', 'no', 'No']:
             break
-        else:
-            print(f'{response} is not a valid response. Try again.\n')
+        print(f'{response} is not a valid response. Try again.\n')
 
     if response in ['N', 'n', 'no', 'No']:
         print('Exiting. No file changes were applied.\n')
     else:
         print('Converting repository....\n')
 
-        # walk files and replace occurrences of `OLDPROJECT` by `project`` ID,
+        # walk files and replace occurrences of `OLDPROJECT` by `project` ID,
         # and `OLDNAME` by `name` (github org/user) as supplied by the user.
         forbiddendirs = ['.git', '.pytest_cache']
         exclude = set(['__pycache__', '_build', '_static', '_template'])
