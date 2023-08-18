@@ -10,9 +10,9 @@ Welcome to template's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   docs/README
+   README
 
-.. include:: ../container_template.md
+.. include:: ../../README.md
    :parser: myst_parser.sphinx_
 
 Indices and tables
