@@ -10,10 +10,10 @@ Welcome to template's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   docs/README
 
-.. include:: _readme.md
-
-.. mdinclude:: ../container_template.md
+.. include:: ../container_template.md
+   :parser: myst_parser.sphinx_
 
 Indices and tables
 ==================

@@ -9,6 +9,7 @@ This is a template repository for singularity/dockerfile containers and build sc
 [![Documentation Status](https://readthedocs.org/projects/container-template/badge/?version=latest)](https://container-template.readthedocs.io/en/latest/?badge=latest)
 [![Flake8 lint](https://github.com/precimed/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/python.yml)
 [![Dockerfile lint](https://github.com/precimed/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/docker.yml)
+[![Use this Template](https://img.shields.io/badge/Use%20this%20template-green.svg)](https://github.com/new?template_name=container_template&template_owner=precimed)
 
 ## Citation
 
