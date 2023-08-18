@@ -65,6 +65,23 @@ The built documentation can be viewed locally in a web browser by opening the fi
 
 The documentation may also be hosted online on [readthedocs.org](https://readthedocs.org).
 
+## SLURM jobscript example
+
+A basic job script example for running a Singularity container in an HPC setting with the [SLURM](https://slurm.schedmd.com) job scheduler is provided in the file [singularity_slurm_job.sh](https://github.com/precimed/container_template/blob/main/scripts/singularity_slurm_job.sh), and should be modified as needed.
+It expects a few environment variables, and can be submitted as
+
+```
+export JOBNAME=container_template
+export ACCOUNT=<project allocation account name>
+export WALLTIME="00:05:00"  # expected run time HH:MM:SS format
+export CPUS_PER_TASK=1  # number of CPU cores
+export MEM_PER_CPU=2000MB  # RAM per CPU
+export SINGULARITY_MODULE=singularity/3.7.1  # name of Singularity module and version
+
+sbatch singuality_slurm_job.sh  # submit jobs
+```
+The output of the job will be written to the text files `container_template.out` (output) and `container_template.err` (errors).
+
 ## Feedback
 
 If you face any issues, or if you need additional software, please let us know by creating a new [issue](https://github.com/precimed/container_template/issues/new).
