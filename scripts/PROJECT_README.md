@@ -78,7 +78,7 @@ export CPUS_PER_TASK=1  # number of CPU cores
 export MEM_PER_CPU=2000MB  # RAM per CPU
 export SINGULARITY_MODULE=singularity/3.7.1  # name of Singularity module and version
 
-sbatch singuality_slurm_job.sh  # submit jobs
+sbatch singularity_slurm_job.sh  # submit job
 ```
 The output of the job will be written to the text files `container_template.out` (output) and `container_template.err` (errors).
 
