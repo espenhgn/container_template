@@ -46,7 +46,7 @@ Please keep up to date (and update the main `<container_template>/README.md` whe
 
 ## Building/rebuilding containers
 
-For instructions on how to build or rebuild containers using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/src/README.md`](https://github.com/precimed/container_template/blob/main/src/README.md).
+For instructions on how to build or rebuild containers using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/docker/README.md`](https://github.com/precimed/container_template/blob/main/docker/README.md).
 
 ## Build the documentation
 
