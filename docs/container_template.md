@@ -24,7 +24,7 @@ Options and arguments (and corresponding environment variables):
 
 ## Helpful links to singularity documentation
 
-It's good idea to familirize with basics of Singularity, such as these:
+It's a good idea to familiarize yourself with the basics of Singularity, such as these:
 
 * ["singularity shell" options](https://sylabs.io/guides/3.2/user-guide/cli/singularity_shell.html#options)
 * [Bind paths and mounts](https://sylabs.io/guides/3.2/user-guide/bind_paths_and_mounts.html).
