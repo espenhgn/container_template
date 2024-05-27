@@ -21,7 +21,11 @@ This repository is used to develop and document [Docker](https://www.docker.com)
 
 If you face any issues, or if you need additional software, please let us know by creating an [issue](https://github.com/espenhgn/container_template/issues/new).
 
-## Build instructions
+## Build instructions – DEPRECATED
+
+The build scripts described below are deprecated and will be removed in the future.
+We rely on a GitHub Actions workflow to build the containers and push them to the GitHub Container Registry.
+See the [GitHub Actions](../.github/workflows/container_build_push.yml) file for more information.
 
 ### The easy(er) way
 
