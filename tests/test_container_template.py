@@ -30,11 +30,11 @@ except FileNotFoundError:
     try:
         out = subprocess.run('docker')
         pwd = os.getcwd()
-        PREFIX = (f'docker run -p {port}:{port} ' + 
-            'ghcr.io/precimed/container_template')
+        PREFIX = (f'docker run -p {port}:{port} ' +
+                  'ghcr.io/precimed/container_template')
         PREFIX_MOUNT = (
             f'docker run -p {port}:{port} ' +
-            f'--mount type=bind,source={pwd},target={pwd} ' + 
+            f'--mount type=bind,source={pwd},target={pwd} ' +
             'ghcr.io/precimed/container_template')
     except FileNotFoundError:
         raise FileNotFoundError(
