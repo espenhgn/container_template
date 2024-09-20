@@ -4,7 +4,10 @@ on:
   push:
     tags:
       - "v*.*.*"
-    
+
+env:
+  TEST_TAG: ghcr.io/precimed/container_template:test
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -37,6 +40,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}      
+
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: "{{defaultContext}}:docker"
+          load: true
+          tags: ${{ env.TEST_TAG }}
+          file:
+            ./dockerfiles/container_template/Dockerfile
+      - name: Test
+        run: |
+          docker run --rm ${{ env.TEST_TAG }} 
+  
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
