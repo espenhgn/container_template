@@ -24,22 +24,22 @@ try:
     pth = os.path.join('containers', 'container_template.sif')
     out = subprocess.run('singularity')
     cwd = os.getcwd()
-    PREFIX = f'singularity run {pth}'
-    PREFIX_MOUNT = PREFIX_MOUNT = f'singularity run --home={cwd}:/home/ {pth}'
+    PREFIX = f'singularity run {pth} '
+    PREFIX_MOUNT = PREFIX_MOUNT = f'singularity run --home={cwd}:/home/ {pth} '
 except FileNotFoundError:
     try:
         out = subprocess.run('docker')
         pwd = os.getcwd()
         PREFIX = (f'docker run -p {port}:{port} ' +
-                  'ghcr.io/precimed/container_template')
+                  'ghcr.io/precimed/container_template ')
         PREFIX_MOUNT = (
             f'docker run -p {port}:{port} ' +
             f'--mount type=bind,source={pwd},target={pwd} ' +
-            'ghcr.io/precimed/container_template')
+            'ghcr.io/precimed/container_template ')
     except FileNotFoundError:
-        raise FileNotFoundError(
-            'Neither `singularity` nor `docker` found in PATH.' +
-            'Can not run tests!')
+        # neither singularity nor docker found, fall back to plain python
+        PREFIX = ''
+        PREFIX_MOUNT = ''
 
 
 def test_assert():
@@ -49,7 +49,7 @@ def test_assert():
 
 def test_container_template_python():
     """test that the Python installation works"""
-    call = f'{PREFIX} python --version'
+    call = f'{PREFIX}python --version'
     out = subprocess.run(call.split(' '))
     assert out.returncode == 0
 
@@ -57,7 +57,7 @@ def test_container_template_python():
 def test_container_template_python_script():
     '''test that Python can run a script'''
     pwd = os.getcwd() if PREFIX.rfind('docker') >= 0 else '.'
-    call = f'''{PREFIX_MOUNT} python {pwd}/tests/extras/hello.py'''
+    call = f'''{PREFIX_MOUNT}python {pwd}/tests/extras/hello.py'''
     out = subprocess.run(call.split(' '), capture_output=True)
     assert out.returncode == 0
 
@@ -70,9 +70,11 @@ def test_container_template_python_packages():
         'pandas',
         'matplotlib',
         'seaborn',
-        'sklearn'
+        'sklearn',
+        'pytest',
+        'jupyterlab',
     ]
     importstr = 'import ' + ', '.join(packages)
-    call = f"{PREFIX} python -c '{importstr}'"
+    call = f"{PREFIX}python -c '{importstr}'"
     out = subprocess.run(call, shell=True)
     assert out.returncode == 0
