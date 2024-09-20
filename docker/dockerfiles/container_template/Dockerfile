@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 ENV TZ=Europe
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 COPY /scripts/apt_get_essential.sh .
