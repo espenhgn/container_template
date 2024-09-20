@@ -57,7 +57,7 @@ jobs:
       - name: Run unit tests
         run: |
           docker run --rm ${{ env.TEST_TAG }}
-          ls -l
+          echo "${PWD} $( ls -l )"
           docker run --rm -v .:/home ${{ env.TEST_TAG }} py.test -v tests
 
       - name: Build
