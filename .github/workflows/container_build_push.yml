@@ -1,9 +1,7 @@
-name: container-build-push
+name: ci container build-push
 
 on:
   push:
-    branches:
-      - 'main'
     tags:
       - "v*.*.*"
     
@@ -40,7 +38,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}      
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: "{{defaultContext}}:docker"
           push: ${{ github.event_name != 'pull_request' }}
