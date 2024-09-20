@@ -10,8 +10,8 @@ on:
     tags:
       - "v*.*.*"
 env:
-  TEST_TAG: user/app:test
-  LATEST_TAG: user/app:latest
+  TEST_TAG: ghcr.io/precimed/container_template:test
+  # LATEST_TAG: ghcr.io/precimed/container_template:latest
 
 jobs:
   docker:
