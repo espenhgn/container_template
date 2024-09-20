@@ -57,7 +57,7 @@ jobs:
       - name: Run unit tests
         run: |
           docker run --rm ${{ env.TEST_TAG }} 
-          docker run -it -p 5001:5001 -v $PWD:/home ${{ env.TEST_TAG }} py.test -v tests
+          docker run --rm -v $PWD:/home ${{ env.TEST_TAG }} py.test -v tests
 
       - name: Build
         uses: docker/build-push-action@v6
