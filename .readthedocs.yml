@@ -6,10 +6,12 @@ sphinx:
 formats: all
 
 build:
-  image: latest
+  os: ubuntu-22.04
+  tools:
+    python: "mambaforge-22.9"
 
 conda:
   environment: docs/source/environment.yml
 
 python:
-    version: "3.8"
+    version: "3.12"
