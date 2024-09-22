@@ -61,10 +61,8 @@ jobs:
         run: |
           docker run --rm ${{ env.TEST_TAG }} python --version
           echo ${{ github.workspace }}
-          ls -la ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
-          ls -la $GITHUB_WORKSPACE
-          docker run --rm -v $GITHUB_WORKSPACE:/home ${{ env.TEST_TAG }} py.test -v tests
+          ls -la ${{ github.workspace }}/..
+          docker run --rm -v ${{ github.workspace }}:/home ${{ env.TEST_TAG }} py.test -v tests
 
       - name: Build
         uses: docker/build-push-action@v6
