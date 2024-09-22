@@ -27,6 +27,7 @@ Revise the `<container_template>/.gitattributes` file as necessary. Some common 
 [![Documentation Status](https://readthedocs.org/projects/container-template/badge/?version=latest)](https://container-template.readthedocs.io/en/latest/?badge=latest)
 [![Flake8 lint](https://github.com/precimed/container_template/actions/workflows/python.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/python.yml)
 [![Dockerfile lint](https://github.com/precimed/container_template/actions/workflows/docker.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/docker.yml)
+[![Container build](https://github.com/precimed/container_template/actions/workflows/container_build.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/container_build.yml)
 [![Container build push](https://github.com/precimed/container_template/actions/workflows/container_build_push.yml/badge.svg)](https://github.com/precimed/container_template/actions/workflows/container_build_push.yml)
 
 ## Description of available containers
@@ -127,13 +128,26 @@ tar --exclude=".git/*" -cvf container_template_$SHA.tar container_template
   
 | OS/tool             | Version               | License           | Source
 | ------------------- | --------------------- | ----------------- | -------------
-| ubuntu              | 20.04                 | [Creative Commons CC-BY-SA version 3.0 UK licence](https://ubuntu.com/legal/intellectual-property-policy) | [Ubuntu.com](https://ubuntu.com)
-| python              | 3.8.10                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
+| ubuntu              | 24.04                 | [Creative Commons CC-BY-SA version 3.0 UK licence](https://ubuntu.com/legal/intellectual-property-policy) | [Ubuntu.com](https://ubuntu.com)
+| mambaforge          | 24.7.1-0              | [BSD-3-Clause](https://github.com/conda-forge/miniforge/blob/main/LICENSE) | [MiniForge](https://github.com/conda-forge/miniforge)
+| python              | 3.12.5                | [PSF](https://docs.python.org/3.10/license.html) | [Python.org](https://www.python.org)
 
 ## Building/rebuilding containers
 
 While we don't recommend building containers locally, it is possible.
 For instructions on how to build or rebuild containers manually using [Docker](https://www.docker.com) and [Singularity](https://docs.sylabs.io) refer to [`<container_template>/docker/README.md`](https://github.com/precimed/container_template/blob/main/docker/README.md).
+
+## Unit tests
+
+Unit tests are available in the `<container_template>/tests` directory. 
+These are run using the [pytest](https://docs.pytest.org/en/stable/) framework, and part of the GitHub Actions workflow.
+To run the tests locally, issue:
+
+```bash
+cd <container_template>
+(pip install pytest)  # if not already installed
+py.test -v tests
+```
 
 ## Build the documentation
 
