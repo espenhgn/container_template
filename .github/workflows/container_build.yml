@@ -54,11 +54,11 @@ jobs:
           tags: ${{ env.TEST_TAG }}
           file:
             ./dockerfiles/container_template/Dockerfile
+
       - name: Run unit tests
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
-          echo "${PWD} $( ls -l )"
-          docker run --rm -v .:/home ${{ env.TEST_TAG }} py.test -v tests
+          docker run --rm ${{ env.TEST_TAG }} python --version
+          docker run --rm -v ${{ github.workspace }}:/home ${{ env.TEST_TAG }} py.test -v tests
 
       - name: Build
         uses: docker/build-push-action@v6
