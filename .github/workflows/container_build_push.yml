@@ -12,6 +12,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -51,7 +53,7 @@ jobs:
             ./dockerfiles/container_template/Dockerfile
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }} 
+          docker run --rm -v ${{ github.workspace }}:/home ${{ env.TEST_TAG }} py.test -v tests
   
       - name: Build and push
         uses: docker/build-push-action@v6
