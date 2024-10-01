@@ -11,26 +11,24 @@ on:
       - "v*.*.*"
 env:
   TEST_TAG: ghcr.io/precimed/container_template:test
-  # LATEST_TAG: ghcr.io/precimed/container_template:latest
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
-          # list of Docker images to use as base name for tags
           images: |
             ghcr.io/${{ github.repository_owner }}/container_template            
-          # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
             type=ref,event=branch
             type=ref,event=pr
+            type=pep440,pattern={{version}}
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
