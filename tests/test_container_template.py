@@ -28,32 +28,36 @@ cwd = os.getcwd()
 try:
     pth = os.path.join('containers', 'container_template.sif')
     try:
-        out = subprocess.run('singularity', check=False)
+        runtime = 'apptainer'
+        out = subprocess.run(runtime, check=False)
     except FileNotFoundError:
         try:
-            out = subprocess.run('apptainer', check=False)
+            runtime = 'singularity'
+            out = subprocess.run(runtime, check=False)
         except FileNotFoundError as exc:
             raise FileNotFoundError from exc
-    PREFIX = f'singularity run {pth} python'
-    PREFIX_MOUNT = f'singularity run --home={cwd}:/home/ {pth} python'
-    PREFIX_CUSTOM_MOUNT = f'singularity run --home={cwd}:/home/ ' + \
+    PREFIX = f'{runtime} run {pth} python'
+    PREFIX_MOUNT = f'{runtime} run --home={cwd}:/home/ {pth} python'
+    PREFIX_CUSTOM_MOUNT = f'{runtime} run --home={cwd}:/home/ ' + \
         '{custom_mount}' + f'{pth} python'
 except FileNotFoundError:
     try:
-        out = subprocess.run('docker', check=False)
-        PREFIX = (f'docker run -p {port}:{port} ' +
+        runtime = 'docker'
+        out = subprocess.run(runtime, check=False)
+        PREFIX = (f'{runtime} run -p {port}:{port} ' +
                   'ghcr.io/precimed/container_template python')
         PREFIX_MOUNT = (
-            f'docker run -p {port}:{port} ' +
+            f'{runtime} run -p {port}:{port} ' +
             f'--mount type=bind,source={cwd},target={cwd} ' +
             'ghcr.io/precimed/container_template python')
         PREFIX_CUSTOM_MOUNT = (
-            f'docker run -p {port}:{port} ' +
+            f'{runtime} run -p {port}:{port} ' +
             f'--mount type=bind,source={cwd},target={cwd} ' +
             '{custom_mount} ' +
             'ghcr.io/precimed/container_template python')
     except FileNotFoundError:
         # neither singularity nor docker found, fall back to plain python
+        runtime = None
         PREFIX = 'python'
         PREFIX_MOUNT = 'python'
         PREFIX_CUSTOM_MOUNT = 'python'
@@ -73,7 +77,7 @@ def test_container_template_python():
 
 def test_container_template_python_script():
     '''test that Python can run a script'''
-    cwd = os.getcwd() if PREFIX.rfind('docker') >= 0 else '.'
+    cwd = os.getcwd() if runtime == 'docker' >= 0 else '.'
     call = f'''{PREFIX_MOUNT} {cwd}/tests/extras/hello.py'''
     out = subprocess.run(call.split(' '), capture_output=True)
     assert out.returncode == 0
@@ -83,7 +87,12 @@ def test_container_template_python_script_from_tempdir():
     '''test that the tempdir is working'''
     with tempfile.TemporaryDirectory() as d:
         os.system(f'cp {cwd}/tests/extras/hello.py {d}/')
-        custom_mount = f'--mount type=bind,source={d},target={d}'
+        if runtime == 'docker':
+            custom_mount = f'--mount type=bind,source={d},target={d}'
+        elif runtime in ['apptainer', 'singularity']:
+            custom_mount = f'--bind {d}:{d} '
+        else:
+            custom_mount = ''
         call = f'{PREFIX_CUSTOM_MOUNT.format(custom_mount=custom_mount)} ' + \
             f'{d}/hello.py'
         out = subprocess.run(call, shell=True, check=False)
