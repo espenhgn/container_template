@@ -83,10 +83,10 @@ def test_container_template_python_script_from_tempdir():
     '''test that the tempdir is working'''
     with tempfile.TemporaryDirectory() as d:
         os.system(f'cp {cwd}/tests/extras/hello.py {d}/')
-        custom_mount = f'--mount type=bind,source={d},target=/temp/'
+        custom_mount = f'--mount type=bind,source={d},target={d}'
         call = f'{PREFIX_CUSTOM_MOUNT.format(custom_mount=custom_mount)} ' + \
-            '/temp/hello.py'
-        out = subprocess.run(call.split(' '), check=False)
+            f'{d}/hello.py'
+        out = subprocess.run(call, shell=True, check=False)
         assert out.returncode == 0
 
 
