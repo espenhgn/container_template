@@ -41,16 +41,16 @@ try:
 except FileNotFoundError:
     try:
         out = subprocess.run('docker', check=False)
-        pwd = os.getcwd()
+        cwd = os.getcwd()
         PREFIX = (f'docker run -p {port}:{port} ' +
                   'ghcr.io/precimed/container_template python')
         PREFIX_MOUNT = (
             f'docker run -p {port}:{port} ' +
-            f'--mount type=bind,source={pwd},target={pwd} ' +
+            f'--mount type=bind,source={cwd},target={cwd} ' +
             'ghcr.io/precimed/container_template python')
         PREFIX_CUSTOM_MOUNT = (
             f'docker run -p {port}:{port} ' +
-            f'--mount type=bind,source={pwd},target={pwd} ' +
+            f'--mount type=bind,source={cwd},target={cwd} ' +
             '{custom_mount} ' +
             'ghcr.io/precimed/container_template python')
     except FileNotFoundError:
@@ -74,8 +74,8 @@ def test_container_template_python():
 
 def test_container_template_python_script():
     '''test that Python can run a script'''
-    pwd = os.getcwd() if PREFIX.rfind('docker') >= 0 else '.'
-    call = f'''{PREFIX_MOUNT} {pwd}/tests/extras/hello.py'''
+    cwd = os.getcwd() if PREFIX.rfind('docker') >= 0 else '.'
+    call = f'''{PREFIX_MOUNT} {cwd}/tests/extras/hello.py'''
     out = subprocess.run(call.split(' '), capture_output=True)
     assert out.returncode == 0
 
@@ -83,7 +83,7 @@ def test_container_template_python_script():
 def test_container_template_python_script_from_tempdir():
     '''test that the tempdir is working'''
     with tempfile.TemporaryDirectory() as d:
-        os.system(f'cp {pwd}/tests/extras/hello.py {d}/')
+        os.system(f'cp {cwd}/tests/extras/hello.py {d}/')
         custom_mount = f'--mount type=bind,source={d},target=/temp/'
         call = f'{PREFIX_CUSTOM_MOUNT.format(custom_mount=custom_mount)} ' + \
             '/temp/hello.py'
