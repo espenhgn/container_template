@@ -19,10 +19,10 @@ sock = socket.socket()
 sock.bind(('', 0))
 port = sock.getsockname()[1]
 
-# Check that (1) singularity or apptainer executables exist, 
+# Check that (1) singularity or apptainer executables exist,
 # and (2) if not, check for docker.
 # If neither are found, tests will fall back to plain python.
-# This may be useful for testing on a local machine, but should 
+# This may be useful for testing on a local machine, but should
 # be revised for the particular usecase.
 try:
     pth = os.path.join('containers', 'container_template.sif')
@@ -36,7 +36,8 @@ try:
     cwd = os.getcwd()
     PREFIX = f'singularity run {pth} python'
     PREFIX_MOUNT = f'singularity run --home={cwd}:/home/ {pth} python'
-    PREFIX_CUSTOM_MOUNT = f'singularity run --home={cwd}:/home/ ' + '{custom_mount}' + f'{pth} python'
+    PREFIX_CUSTOM_MOUNT = f'singularity run --home={cwd}:/home/ ' + \
+        '{custom_mount}' + f'{pth} python'
 except FileNotFoundError:
     try:
         out = subprocess.run('docker', check=False)
@@ -105,4 +106,3 @@ def test_container_template_python_packages():
     call = f"{PREFIX} -c '{importstr}'"
     out = subprocess.run(call, shell=True)
     assert out.returncode == 0
-
