@@ -9,15 +9,9 @@ back to ``docker``.
 """
 
 import os
-import socket
 import subprocess
 import tempfile
 
-
-# port used by tests
-sock = socket.socket()
-sock.bind(('', 0))
-port = sock.getsockname()[1]
 
 # Check that (1) singularity or apptainer executables exist,
 # and (2) if not, check for docker.
@@ -44,14 +38,14 @@ except FileNotFoundError:
     try:
         runtime = 'docker'
         out = subprocess.run(runtime, check=False)
-        PREFIX = (f'{runtime} run -p {port}:{port} ' +
+        PREFIX = (f'{runtime} run ' +
                   'ghcr.io/precimed/container_template python')
         PREFIX_MOUNT = (
-            f'{runtime} run -p {port}:{port} ' +
+            f'{runtime} run ' +
             f'--mount type=bind,source={cwd},target={cwd} ' +
             'ghcr.io/precimed/container_template python')
         PREFIX_CUSTOM_MOUNT = (
-            f'{runtime} run -p {port}:{port} ' +
+            f'{runtime} run ' +
             f'--mount type=bind,source={cwd},target={cwd} ' +
             '{custom_mount} ' +
             'ghcr.io/precimed/container_template python')
