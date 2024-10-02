@@ -77,7 +77,7 @@ def test_container_template_python():
 
 def test_container_template_python_script():
     '''test that Python can run a script'''
-    cwd = os.getcwd() if runtime == 'docker' >= 0 else '.'
+    cwd = os.getcwd() if runtime == 'docker' else '.'
     call = f'''{PREFIX_MOUNT} {cwd}/tests/extras/hello.py'''
     out = subprocess.run(call.split(' '), capture_output=True)
     assert out.returncode == 0
