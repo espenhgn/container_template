@@ -57,6 +57,7 @@ except FileNotFoundError:
         # neither singularity nor docker found, fall back to plain python
         PREFIX = 'python'
         PREFIX_MOUNT = 'python'
+        PREFIX_CUSTOM_MOUNT = 'python'
 
 
 def test_assert():
