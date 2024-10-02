@@ -6,7 +6,7 @@ on:
       - "v*.*.*"
 
 env:
-  TEST_TAG: ghcr.io/precimed/container_template:test
+  LATEST_TAG: ghcr.io/precimed/container_template:latest
 
 jobs:
   docker:
@@ -48,12 +48,18 @@ jobs:
         with:
           context: "{{defaultContext}}:docker"
           load: true
-          tags: ${{ env.TEST_TAG }}
+          tags: ${{ env.LATEST_TAG }}
           file:
             ./dockerfiles/container_template/Dockerfile
-      - name: Test
+
+      - name: Run unit tests I
         run: |
-          docker run --rm -v ${{ github.workspace }}:/home ${{ env.TEST_TAG }} py.test -v tests
+          docker run --rm -v ${{ github.workspace }}:/home ${{ env.LATEST_TAG }} py.test -v tests
+      
+      - name: Run unit tests II
+        run: |
+          pip install -r test-requirements.txt
+          py.test -v tests
   
       - name: Build and push
         uses: docker/build-push-action@v6
