@@ -24,6 +24,7 @@ port = sock.getsockname()[1]
 # If neither are found, tests will fall back to plain python.
 # This may be useful for testing on a local machine, but should
 # be revised for the particular usecase.
+cwd = os.getcwd()
 try:
     pth = os.path.join('containers', 'container_template.sif')
     try:
@@ -33,7 +34,6 @@ try:
             out = subprocess.run('apptainer', check=False)
         except FileNotFoundError as exc:
             raise FileNotFoundError from exc
-    cwd = os.getcwd()
     PREFIX = f'singularity run {pth} python'
     PREFIX_MOUNT = f'singularity run --home={cwd}:/home/ {pth} python'
     PREFIX_CUSTOM_MOUNT = f'singularity run --home={cwd}:/home/ ' + \
@@ -41,7 +41,6 @@ try:
 except FileNotFoundError:
     try:
         out = subprocess.run('docker', check=False)
-        cwd = os.getcwd()
         PREFIX = (f'docker run -p {port}:{port} ' +
                   'ghcr.io/precimed/container_template python')
         PREFIX_MOUNT = (
