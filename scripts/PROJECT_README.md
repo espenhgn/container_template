@@ -183,6 +183,79 @@ sbatch singularity_slurm_job.sh  # submit job
 ```
 The output of the job will be written to the text files `container_template.out` (output) and `container_template.err` (errors).
 
+
+## Workflows
+
+The following sections describe how to run the provided workflows using different workflow management systems.
+The Docker container is assumed to be available and tagged as `ghcr.io/precimed/container_template:latest`: 
+
+```bash
+# (optional) make sure that the container is available; tagged as "latest"
+docker pull --platform=linux/amd64 ghcr.io/precimed/container_template:<tag>
+docker image tag ghcr.io/precimed/container_template:0.1.0rc8 ghcr.io/precimed/container_template:latest
+```
+
+### WDL
+
+The [Workflow Description Language](https://openwdl.org) (WDL) is a way to describe workflows in a way that is portable and reproducible.
+
+We have included a basic WDL file and JSON file defining inputs in the `<container_template>/wdl` directory.
+To run the pipeline, you will need to install [miniwdl](https://github.com/chanzuckerberg/miniwdl?tab=readme-ov-file#miniwdl) or some other execution engine like [Cromwell](https://cromwell.readthedocs.io/en/stable/), and run the following command:
+
+```bash
+cd <container_template>/wdl
+# (optional) create a new conda environment and install miniwdl
+conda create -n miniwdl -c conda-forge pip -y
+conda activate miniwdl
+pip install miniwdl
+
+# run the WDL file
+miniwdl run hello_world.wdl -i inputs.json
+```
+
+To check the output, see the file
+
+```
+<container_template>/wdl/_LAST/out/output_file/<output_file_name>
+```
+### Nextflow
+
+[Nextflow](https://www.nextflow.io) is a workflow manager that enables the development of portable and reproducible workflows.
+
+We have provided a basic Nextflow script in the `<container_template>/nextflow` directory. 
+To execute the workflow, you will need to (optionally) install Nextflow and run the following command:
+
+```bash
+cd <container_template>/nextflow
+# (optional) download and install nextflow executable in the current directory
+curl -s https://get.nextflow.io | bash
+
+# run Snakemake
+./nextflow run nextflow/main.nf
+```
+
+The output will be written to the `output_file` defined in the Nextflow script.
+
+### Snakemake
+
+[Snakemake](https://snakemake.github.io) is a workflow management system that aims to reduce the complexity of creating workflows by providing a fast and comfortable way to define them.
+
+We have provided a basic Snakefile in the `<container_template>/snakemake` directory.
+To run the pipeline, you will need to install Snakemake and run the following command:
+
+```bash
+# (optional) create a new conda environment and install Snakemake
+cd <container_template>/snakemake
+# (optional) create a new conda environment and install miniwdl
+conda create -c conda-forge -c bioconda -n snakemake snakemake -y
+conda activate snakemake
+
+# run Snakemake
+snakemake
+```
+
+The output will be written to the `output_file` defined in the Snakefile.
+
 ## Feedback
 
 If you face any issues, or if you need additional software, please let us know by creating a new [issue](https://github.com/precimed/container_template/issues/new).
