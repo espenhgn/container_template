@@ -68,8 +68,8 @@ To obtain updated versions of the Singularity Image Format (.sif) container file
 ```bash
 cd path/to/repositories/container_template/singularity
 mv container_template.sif container_template.sif.old  # optional, just rename the old(er) file
-apptainer pull docker://ghcr.io/precimed/container_template:<tag>  # or
-singularity pull docker://ghcr.io/precimed/container_template:<tag> # or 
+apptainer pull container_template.sif docker://ghcr.io/precimed/container_template:<tag>  # or
+singularity pull container_template.sif docker://ghcr.io/precimed/container_template:<tag> # or 
 oras pull ghcr.io/precimed/container_template_sif:<tag>
 ```
 
