@@ -68,10 +68,10 @@ jobs:
           image: ${{ env.LATEST_TAG }}
           fail-build: true
           output-format: table
-          severity-cutoff: critical
+          severity-cutoff: high
 
-      - name: Inspect scan action table report
-        run: cat ${{ steps.anchor_scan.outputs.sarif }}
+      # - name: Inspect scan action table report
+      #   run: cat ${{ steps.anchor_scan.outputs.sarif }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
