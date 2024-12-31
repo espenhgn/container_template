@@ -67,10 +67,10 @@ jobs:
         with:
           image: ${{ env.LATEST_TAG }}
           fail-build: true
-          output-format: sarif
+          output-format: table
           severity-cutoff: critical
 
-      - name: Inspect action SARIF report
+      - name: Inspect scan action table report
         run: cat ${{ steps.anchor_scan.outputs.sarif }}
 
       - name: Build and push
