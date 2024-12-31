@@ -10,8 +10,8 @@ RUN bash apt_get_essential.sh && \
 
 
 WORKDIR /tmp
-COPY /scripts/install_mambaforge.sh .
-RUN bash install_mambaforge.sh
+COPY /scripts/install_miniforge3.sh .
+RUN bash install_miniforge3.sh
 COPY /scripts/environment.yml .
 RUN mamba env update --name base --file environment.yml && \
     conda clean --all --yes && \
