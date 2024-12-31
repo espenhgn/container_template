@@ -73,7 +73,7 @@ jobs:
           output-format: table
           severity-cutoff: critical
 
-      - name: Inspect action table report
+      - name: Inspect scan action table report
         run: cat ${{ steps.anchor_scan.outputs.sarif }}
 
       - name: Build
