@@ -64,6 +64,11 @@ jobs:
           pip install -r test-requirements.txt
           py.test -v tests
 
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: ${{ env.LATEST_TAG }}
+
       - name: Build
         uses: docker/build-push-action@v6
         with:
