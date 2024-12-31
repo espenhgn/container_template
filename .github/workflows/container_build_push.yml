@@ -67,6 +67,7 @@ jobs:
         with:
           image: ${{ env.LATEST_TAG }}
           fail-build: true
+          output-format: sarif
           severity-cutoff: critical
 
       - name: Inspect action SARIF report
