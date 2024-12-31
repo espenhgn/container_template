@@ -68,8 +68,9 @@ jobs:
         uses: anchore/scan-action@v3
         with:
           image: ${{ env.LATEST_TAG }}
-          fail-build: false
-          severity-cutoff: high
+          fail-build: true
+          severity-cutoff: critical
+
 
       - name: Build
         uses: docker/build-push-action@v6
